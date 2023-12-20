@@ -59,12 +59,10 @@ export async function GET(req, res) {
   try {
     let { searchParams } = new URL(req.url);
     let id = searchParams.get("id");
-    if(id==="" || id===null) {
       const number = id * 1;
       const result = await prisma.users.findUnique({
         where: {id: number},
       });
-
       return NextResponse.json({data: result}, {status: 200});
     }else{
 
